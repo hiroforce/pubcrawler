@@ -1,0 +1,10 @@
+Nearest pubs in database within 25 miles of lattitude <%= params[:lat] %> , longitude <%= params[:lng] %> :
+{
+<% @locations.each do |location| %>
+		
+		"Location": {
+		<%= location.name.to_json %>
+			<%= location.address.to_json %>
+		}
+<% end %>
+}		
