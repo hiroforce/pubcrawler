@@ -1,0 +1,9 @@
+{
+<% @locations.each do |location| %>
+		
+		"Location": {
+		<%= location.name.to_json %>
+			<%= location.address.to_json %>
+		}
+<% end %>
+}	
