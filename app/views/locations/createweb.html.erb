@@ -1,0 +1,18 @@
+
+<%= form_for(:location, :url => {:action => 'createweb'}) do |f| %>
+  
+    <th><%= f.label(:name) %></th>
+    <td><%= f.text_field(:name) %></td>
+	<th><%= f.label(:address) %></th>
+    <td><%= f.text_field(:address) %></td>
+    
+    <div class="form-buttons">
+      <%= submit_tag("Create Bar") %>
+    </div>
+    
+  <% end %>
+
+
+    
+	
+	     

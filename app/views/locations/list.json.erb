@@ -2,8 +2,8 @@
 <% @locations.each do |location| %>
 		
 		"Location": {
-		<%= location.name.to_json %>
-			<%= location.address.to_json %>
+		"name": "<%= location.name%>"
+		"address": "<%= location.address%>"
 		}
 <% end %>
 }	
