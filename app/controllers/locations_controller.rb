@@ -56,6 +56,6 @@ class LocationsController < ApplicationController
 	@location.lat = loc.lat
 	@location.save
 	# 32.649775,-97.161112
-	#url should look like: http://example.com/locations/create?name=new bar&address=1900 pa ave,washington,dc&lat=32.649775&lng=-97.161112
+	#url should look like: http://localhost:3000/locations/createweb?name=Triniy Hall&address=5321 East Mockingbird Lane&bar_type=pub&subtype=dive&description=This is another trinity test
 	end
 end
