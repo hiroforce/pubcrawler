@@ -2,20 +2,25 @@ class LocationsController < ApplicationController
 	def list
 	lat = params[:lat].to_s
 	lng = params[:lng].to_s
+	dst = params[:dst].to_s
 	
-	 @locations = Locations.within(25, :origin => [lat,lng])
+	
+	 @locations = Locations.within(dst, :origin => [lat,lng])
+	@locations.sort_by_distance_from([lat,lng])
 	# 32.649775,-97.161112
-	#url should look like: http://example.com/locations/list?lat=32.649775&lng=-97.161112
+	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112
 	 
 	end
 	
 	def listweb
 	lat = params[:lat].to_s
 	lng = params[:lng].to_s
+	dst = params[:dst].to_s
+
 	
-	 @locations = Locations.within(25, :origin => [lat,lng])
-	# 32.649775,-97.161112
-	#url should look like: http://example.com/locations/list?lat=32.649775&lng=-97.161112
+	 @locations = Locations.within(dst, :origin => [lat,lng], :order => 'distance').where type=bar
+	# 32.649775,-97.161112      2813811789  2813160003
+	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112
 	 
 	end
 	

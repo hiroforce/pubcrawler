@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119163905) do
+ActiveRecord::Schema.define(:version => 20121121161115) do
 
   create_table "locations", :force => true do |t|
-    t.string   "name",        :limit => 25
-    t.string   "address",     :limit => 50
+    t.string   "name",        :limit => 200
+    t.string   "address",     :limit => 500
     t.float    "lng"
     t.float    "lat"
     t.datetime "created_at",                 :null => false
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20121119163905) do
     t.string   "subtype",     :limit => 50
     t.text     "description"
     t.string   "icon",        :limit => 100
+    t.string   "phone",       :limit => 50
+    t.string   "web",         :limit => 50
   end
 
   create_table "users", :force => true do |t|
