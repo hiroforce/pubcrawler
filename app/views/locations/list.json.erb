@@ -9,7 +9,7 @@
 		"subtype": "<%= location.subtype%>"
 		"description": "<%= location.description%>"
 		"icon": "<%= location.icon%>"
-		"distance": "<%= location.distance %>"
+		"distance": "<%= location.distance.to_s[0..3] %>"
 		}
 <% end %>
 }	
