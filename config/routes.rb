@@ -3,6 +3,10 @@ PubCrawler::Application.routes.draw do
   # first created -> highest priority.
   
    match 'locations/list' => 'locations#list', :defaults => { :format => 'json' }
+   match 'locations/listbar' => 'locations#list', :defaults => { :format => 'json' }
+   match 'locations/listdist' => 'locations#list', :defaults => { :format => 'json' }
+   match 'locations/listrest' => 'locations#list', :defaults => { :format => 'json' }
+   match 'locations/listgroc' => 'locations#list', :defaults => { :format => 'json' }
    match 'locations/createweb' => 'locations#createweb', :defaults => { :format => 'html' }
 
   # Sample of regular route:
