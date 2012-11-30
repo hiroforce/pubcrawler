@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
 	@locations = Locations.within(dst, :origin => [lat,lng]).where("bar_type= ?", typ)
 	@locations.sort_by_distance_from([lat,lng])
 	# 32.649775,-97.161112
-	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&typ=BAR
+	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&type=BAR
 	 
 	end
 	
