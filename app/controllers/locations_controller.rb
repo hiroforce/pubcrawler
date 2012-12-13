@@ -4,24 +4,15 @@ class LocationsController < ApplicationController
 	lng = params[:lng].to_s
 	dst = params[:dst].to_s
 	typ = params[:type].to_s
-	@locations = Locations.within(dst, :origin => [lat,lng]).where("bar_type= ?", typ)
+	if typ == ""
+		@locations = Locations.within(dst, :origin => [lat,lng])
+	else
+		@locations = Locations.within(dst, :origin => [lat,lng]).where("bar_type= ?", typ)
+	end
 	@locations.sort_by_distance_from([lat,lng])
 	# 32.649775,-97.161112
-	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&type=BAR
-	 
-	end
-	
-	
-	
-	def listweb
-	lat = params[:lat].to_s
-	lng = params[:lng].to_s
-	dst = params[:dst].to_s
-
-	
-	 @locations = Locations.within(dst, :origin => [lat,lng], :order => 'distance')
-	# 32.649775,-97.161112      2813811789  2813160003
-	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112
+	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&type=BAR for one type or
+	# http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&type= for all types at once
 	 
 	end
 	
