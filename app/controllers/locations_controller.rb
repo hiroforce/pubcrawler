@@ -4,15 +4,23 @@ class LocationsController < ApplicationController
 	lng = params[:lng].to_s
 	dst = params[:dst].to_s
 	typ = params[:type].to_s
-	if typ == ""
-		@locations = Locations.within(dst, :origin => [lat,lng])
-	else
-		@locations = Locations.within(dst, :origin => [lat,lng]).where("bar_type= ?", typ)
-	end
+		if typ == ""
+			@locations = Locations.within(dst, :origin => [lat,lng])
+		else
+			@locations = Locations.within(dst, :origin => [lat,lng]).where("bar_type= ?", typ)
+		end
 	@locations.sort_by_distance_from([lat,lng])
 	# 32.649775,-97.161112
 	#url should look like: http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&type=BAR for one type or
 	# http://example.com/locations/list?dst=5&lat=32.649775&lng=-97.161112&type= for all types at once
+	 
+	end
+	
+	def show
+	id = params[:id].to_s
+	@locations = Locations.find(id)
+	#url should look like: http://example.com/locations/show?id=5
+	
 	 
 	end
 	
@@ -35,13 +43,13 @@ class LocationsController < ApplicationController
 	bar_type = params[:bar_type]
 	subtype = params[:subtype]
 	description = params[:description]
-	if bar_type == 'pub'
-		icon = 'http://frankmilne.com/pubimages/pub.png'
-	elsif bar_type == 'lounge'
-		icon = 'http://frankmilne.com/pubimages/lounge.png'
-	elsif bar_type == 'wine'
-		icon = 'http://frankmilne.com/pubimages/wine.png'
-	end
+		if bar_type == 'pub'
+			icon = 'http://frankmilne.com/pubimages/pub.png'
+		elsif bar_type == 'lounge'
+			icon = 'http://frankmilne.com/pubimages/lounge.png'
+		elsif bar_type == 'wine'
+			icon = 'http://frankmilne.com/pubimages/wine.png'
+		end
    
 
 	
@@ -54,5 +62,22 @@ class LocationsController < ApplicationController
 	@location.save
 	# 32.649775,-97.161112
 	#url should look like: http://localhost:3000/locations/createweb?name=Triniy Hall&address=5321 East Mockingbird Lane&bar_type=pub&subtype=dive&description=This is another trinity test
+	end
+	
+	def update
+	id = params[:id]
+	cng = params[:cng].to_s
+	fld = params[:fld].to_s
+	flda = fld 
+	@location = Locations.find(id)
+		if fld == "description"
+			@location.update_attributes(:description => cng)
+		else 
+			@location.update_attributes(:bar_type => cng)
+		
+		end
+	
+	# 32.649775,-97.161112
+	#url should look like: http://example.com/locations/update?id=92&fld=description&desc=This is the description
 	end
 end

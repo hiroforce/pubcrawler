@@ -1,0 +1,16 @@
+{ "Locations":[
+<% @locations.each do |location| %>
+		
+		{
+		"id": "<%= location.id %>",
+		"name": "<%= location.name%>",
+		"address": "<%= location.address%>",
+		"phone": "<%= location.phone%>",
+		"type": "<%= location.bar_type%>",
+		"subtype": "<%= location.subtype%>",
+		"description": "<%= location.description%>",
+		"icon": "<%= location.icon%>",
+		"distance": "<%= location.distance.to_s[0..3] %>"
+		},
+<% end %>
+]}	
