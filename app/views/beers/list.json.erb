@@ -1,0 +1,9 @@
+{ "Beers":[
+<% @beers.each do |beer| %>
+		
+		{
+		"id": "<%= beer.id %>",
+		"name": "<%= beer.name%>"
+		},
+<% end %>
+]}	

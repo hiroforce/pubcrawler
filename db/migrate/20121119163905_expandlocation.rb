@@ -1,6 +1,6 @@
 class Expandlocation < ActiveRecord::Migration
   def up
-	add_column("locations", "bar_type", :string, :limit => 10)
+	add_column("locations", "bar_type", :string, :limit => 50)
 	add_column("locations", "subtype", :string, :limit => 50)
 	add_column("locations", "description", :text)
 	add_column("locations", "icon", :string, :limit => 100)

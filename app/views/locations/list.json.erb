@@ -1,15 +1,18 @@
-{
+{ "Locations":[
 <% @locations.each do |location| %>
 		
-		"Location": {
-		"id:" "<%= location.id %>"
-		"name": "<%= location.name%>"
-		"address": "<%= location.address%>"
-		"type": "<%= location.bar_type%>"
-		"subtype": "<%= location.subtype%>"
-		"description": "<%= location.description%>"
-		"icon": "<%= location.icon%>"
-		"distance": "<%= location.distance.to_s[0..3] %>"
-		}
+		{
+		"id": "<%= location.id %>",
+		"name": "<%= location.name%>",
+		"address": "<%= location.address%>",
+		"phone": "<%= location.phone%>",
+		"type": "<%= location.bar_type%>",
+		"subtype": "<%= location.subtype%>",
+		"description": "<%= location.description%>",
+		"icon": "<%= location.icon%>",
+		"distance": "<%= location.distance.to_s[0..3] %>",
+		"lattitude": "<%= location.lat.to_s %>",
+		"longitude": "<%= location.lng.to_s %>"
+		},
 <% end %>
-}	
+]}	

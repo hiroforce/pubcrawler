@@ -6,6 +6,7 @@ PubCrawler::Application.routes.draw do
    match 'locations/show' => 'locations#show', :defaults => { :format => 'json' }
    match 'locations/update' => 'locations#update'
    match 'locations/createweb' => 'locations#createweb', :defaults => { :format => 'html' }
+   match 'beers/list' => 'beers#list', :defaults => { :format => 'json' }
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

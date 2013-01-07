@@ -11,7 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121161115) do
+ActiveRecord::Schema.define(:version => 20130104222358) do
+
+  create_table "beer_categories", :force => true do |t|
+    t.string "name", :limit => 20
+  end
+
+  create_table "beer_styles", :force => true do |t|
+    t.integer "cat_id"
+    t.string  "name",   :limit => 20
+  end
+
+  create_table "beers", :force => true do |t|
+    t.integer  "brewery_id"
+    t.string   "name",       :limit => 500
+    t.integer  "cat_id"
+    t.integer  "style_id"
+    t.integer  "abv"
+    t.text     "desc"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "breweries", :force => true do |t|
+    t.string   "name",       :limit => 500
+    t.string   "address1",   :limit => 500
+    t.string   "address2",   :limit => 500
+    t.string   "city",       :limit => 50
+    t.string   "state",      :limit => 50
+    t.integer  "code"
+    t.string   "country",    :limit => 50
+    t.string   "phone",      :limit => 50
+    t.string   "website",    :limit => 500
+    t.text     "desc"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "breweries_geocode", :force => true do |t|
+    t.integer  "brewery_id"
+    t.float    "lattitude"
+    t.float    "longitude"
+    t.string   "accuracy",   :limit => 20
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "locations", :force => true do |t|
     t.string   "name",        :limit => 200
@@ -20,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20121121161115) do
     t.float    "lat"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-    t.string   "bar_type",    :limit => 10
+    t.string   "bar_type",    :limit => 50
     t.string   "subtype",     :limit => 50
     t.text     "description"
     t.string   "icon",        :limit => 100
